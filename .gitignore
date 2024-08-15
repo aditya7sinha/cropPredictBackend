@@ -1,0 +1,12 @@
+venv/
+.venv/
+.env
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+generated_log_files/
+generated_log_files_target/
+
+app.services.test.py
