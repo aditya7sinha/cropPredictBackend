@@ -4,13 +4,11 @@ import pandas as pd
 import tensorflow as tf
 from flask_cors import CORS
 import joblib
-from config import Config
-
+import os 
 
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
-app.config.from_object(Config)
 
 # Load the models
 tf_model = tf.keras.models.load_model('crop_model.h5')  # TensorFlow model
@@ -64,6 +62,7 @@ def predict_crop():
     except Exception as e:
         return jsonify({'error': str(e)}), 400
 
-# Start the Flask app
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
